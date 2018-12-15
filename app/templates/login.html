@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+<!-- The title that is defined for this page-->
+{% block title %}Login{% endblock %}
+
+<!-- The content to go in the form block-->
+{% block form %}
+<form action="" method="post">
+<!--hidden_tag() renders the hidden field that protects against CSRF attacks-->
+	{{ form.hidden_tag() }}
+	<p>
+		{{ form.email.label }}
+		{{ form.email() }}
+	</p>
+	<p>
+		{{ form.password.label }}
+		{{ form.password() }}
+	</p>
+	<p>
+		{{ form.submit() }}
+	</p>
+</form>
+<a href="{{ url_for('register') }}">
+	<p>Need to create an account or reset your password?</p>
+</a>
+{% if errors %}
+{% for error in errors %}
+<p>{{ error }}</p>
+{% endfor %}
+{% endif %}
+{% endblock %}

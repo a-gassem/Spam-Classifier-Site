@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Finding a Message ID{% endblock %}
+
+{% block form %}
+<p>You are currently logged in.</p>
+<p>No emails scanned.</p>
+
+<p>Follow these steps to find the Message ID of an email:</p>
+<img src="{{ url_for('static', filename='step1.png') }}" alt=""/>
+<p>1. Click on the email wherever it is in your inbox.</p>
+<img src="{{ url_for('static', filename='step2.png') }}" alt=""/>
+<p>2. Click on the 3 dots to the right of the email and click on "Show Original".</p>
+<img src="{{ url_for('static', filename='step3.png') }}" alt=""/>
+<p>3. Under "Original Message" there should be the Message ID between &#60 &#62 .</p>
+<a href="{{ url_for('scan') }}"><button>Back</button></a>
+<a href="{{ url_for('login') }}"><button>Log out</button></a>
+{% endblock %}

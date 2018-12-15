@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Confirm{% endblock %}
+
+{% block form %}
+<p>An email has been sent to you on what to do.</p>
+<p>Check your inbox and spam folder to find it and follow the given instructions.</p>
+<form action="" method="post">
+	{{ form.hidden_tag() }}
+	<p>
+		{{ form.code.label }}
+		{{ form.code() }}
+	</p>
+	<p>
+		{{ form.submit() }}
+	</p>
+</form>
+<a href="{{ url_for('register') }}"><button>Back</button></a>
+{% if errors %}
+{% for error in errors %}
+<p>{{ error }}</p>
+{% endfor %}
+{% endif %}
+{% endblock %}

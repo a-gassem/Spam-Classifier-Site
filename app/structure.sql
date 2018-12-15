@@ -1,0 +1,58 @@
+DROP TABLE IF EXISTS Registrants;
+DROP TABLE IF EXISTS PasswordPairs;
+DROP TABLE IF EXISTS Codes;
+DROP TABLE IF EXISTS Addresses;
+DROP TABLE IF EXISTS Blacklists;
+DROP TABLE IF EXISTS Whitelists;
+DROP TABLE IF EXISTS Scans;
+CREATE TABLE Registrants( 
+	UserID TEXT NOT NULL PRIMARY KEY, 
+	Email TEXT NOT NULL UNIQUE, 
+	EmailsSent TINYINT,
+	ResetTime INTEGER,
+	PasswordHash TEXT
+); 
+
+CREATE TABLE PasswordPairs(
+	UserID TEXT NOT NULL,
+	PasswordHash TEXT NOT NULL,
+	FOREIGN KEY(UserID) REFERENCES Registrants(UserID),
+	PRIMARY KEY(UserID, PasswordHash)
+);
+
+CREATE TABLE Codes( 
+	TokenHash TEXT NOT NULL PRIMARY KEY, 
+	UserID TEXT NOT NULL,
+	ExpirationTime INTEGER NOT NULL,
+	FOREIGN KEY(UserID) REFERENCES Registrants(UserID)
+); 
+
+CREATE TABLE Addresses( 
+	AddressID INTEGER NOT NULL PRIMARY KEY, 
+	Address TEXT UNIQUE NOT NULL 
+);
+
+CREATE TABLE Blacklists( 
+	UserID TEXT NOT NULL, 
+	AddressID INTEGER NOT NULL,
+	FOREIGN KEY(UserID) REFERENCES Registrants(UserID),
+	FOREIGN KEY(AddressID) REFERENCES Addresses(AddressID),
+	PRIMARY KEY(UserID, AddressID)
+); 
+
+CREATE TABLE Whitelists( 
+	UserID TEXT NOT NULL, 
+	AddressID INTEGER NOT NULL,
+	FOREIGN KEY(UserID) REFERENCES Registrants(UserID),
+	FOREIGN KEY(AddressID) REFERENCES Addresses(AddressID),
+	PRIMARY KEY(UserID, AddressID)
+); 
+
+CREATE TABLE Scans( 
+	EmailID INTEGER NOT NULL PRIMARY KEY, 
+	UserID INTEGER NOT NULL, 
+	SenderAddress TEXT NOT NULL, 
+	Preview TEXT NOT NULL, 
+	Confidence TINYINT NOT NULL,
+	FOREIGN KEY(UserID) REFERENCES Registrants(UserID)
+); 

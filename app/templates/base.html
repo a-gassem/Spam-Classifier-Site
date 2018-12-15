@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>	
+	<!-- ignore request for site icon-->
+		<link rel="icon" href="data:,">	
+	
+	<!-- Change the title of the page depending on the current page-->
+		<title>{% block title %}{% endblock %} - Spam Email Classifier</title>
+	</head>
+	<body>
+		<h1>Spam Email Classifier</h1>
+	<!-- If a form was passed, use it here-->
+		{% if form %}
+		{% block form %}{% endblock %}
+		{% endif %}
+	<body>
+</html>

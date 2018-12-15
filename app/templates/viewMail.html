@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}View Scanned Mail{% endblock %}
+
+{% block form %}
+<p>You are currently logged in.</p>
+<p>No emails scanned.</p>
+
+<a href="{{ url_for('index') }}"><button>Back</button></a>
+<a href="{{ url_for('login') }}"><button>Log out</button></a>
+{% endblock %}

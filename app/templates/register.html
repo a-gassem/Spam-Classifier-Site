@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+
+{% block form %}
+<p>Enter the Gmail email address that you would like to sign up with.</p>
+<form action="" method="post">
+	{{ form.hidden_tag() }}
+	<p>
+		{{ form.email.label }}
+		{{ form.email() }}
+	</p>
+	<p>
+		{{ form.submit() }}
+	</p>
+</form>
+<a href="{{ url_for('login') }}"><button>Back</button></a>
+{% if errors %}
+{% for error in errors %}
+<p>{{ error }}</p>
+{% endfor %}
+{% endif %}
+{% endblock %}

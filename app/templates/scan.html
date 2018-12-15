@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Scan an Email{% endblock %}
+
+{% block form %}
+<p>You are currently logged in.</p>
+<p>No emails scanned.</p>
+
+<p>Enter the Message ID of the email that you would like to scan.</p>
+<form action="" method="post">
+	{{ form.hidden_tag() }}
+	<p>
+		{{ form.messageID.label }}
+		{{ form.messageID() }}
+	</p>
+	<p>
+		{{ form.submit() }}
+	</p>
+	
+	<a href="{{ url_for('help') }}">
+		<p>How do I find the Message ID?</p>
+	</a>
+</form>
+<a href="{{ url_for('index') }}"><button>Back</button></a>
+<a href="{{ url_for('login') }}"><button>Log out</button></a>
+{% endblock %}

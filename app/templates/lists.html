@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}View Blacklist and Whitelist{% endblock %}
+
+{% block form %}
+<form action="" method="post">
+	{{ form.hidden_tag() }}
+	<p>
+		{{ form.address.label }}
+		{{ form.address() }}
+	</p>
+	<p>
+		{{ form.whitelistSubmit() }}
+	</p>
+	<p>
+		{{ form.blacklistSubmit() }}
+	</p>
+</form>
+<a href="{{ url_for('index') }}"><button>Back</button></a>
+<a href="{{ url_for('login') }}"><button>Log out</button></a>
+{% endblock %}

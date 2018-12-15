@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Results from Scan{% endblock %}
+
+{% block form %}
+<p>You are currently logged in.</p>
+<p>No emails scanned.</p>
+
+<p>Result:</p>
+<p>50% sure that the email was spam!</p>
+
+<a href="{{ url_for('scan') }}"><button>Scan a new email</button></a>
+<a href="{{ url_for('index') }}"><button>Back to Index Page</button></a>
+<a href="{{ url_for('lists') }}"><button>View black/whitelists</button></a>
+<a href="{{ url_for('login') }}"><button>Log out</button></a>
+{% endblock %}

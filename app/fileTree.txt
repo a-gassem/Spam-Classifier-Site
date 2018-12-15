@@ -1,0 +1,25 @@
+app/
+	static/
+		step1.png
+		step2.png
+		step3.png
+	templates/
+		base.html
+		confirm.html
+		help.html
+		index.html
+		lists.html
+		login.html
+		password.html
+		register.html
+		result.html
+		scan.html
+		viewMail.html
+	__init__.py
+	routes.py
+config.py
+forms.py
+
+
+	
+	
