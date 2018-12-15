@@ -1,2 +1,2 @@
-# Spam-Classifier-Site
+# Spam Classifier Site
 Unfinished.
